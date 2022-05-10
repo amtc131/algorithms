@@ -9,7 +9,6 @@ func Urlify(str string) string {
 	l := len(str) + (s * 2)
 	n := make([]byte, l)
 	i, j := 0, 0
-	//j := 0
 	for i < len(str) {
 		if str[i] == ' ' {
 			n[j] = '%'
