@@ -13,7 +13,9 @@ func TestFindFirstUnique(t *testing.T) {
 		want int
 	}{
 		{[]int{9, 2, 3, 2, 6, 6}, 9},
-		{[]int{9, 9, 3, 3, 2, 6, 6}, 2},
+		{[]int{4, 4, 4, 3}, 3},
+		{[]int{4, 5, 1, 2, 0, 4}, 5},
+		{[]int{2, 54, 7, 2, 6, 54}, 7},
 	}
 
 	for _, tc := range tests {
