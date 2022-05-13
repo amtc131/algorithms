@@ -15,5 +15,27 @@ func TestMyStack(t *testing.T) {
 			t.Errorf("Pop() = %v, Got: %v", -1, got)
 		}
 	})
+	
+	t.Run("Test 2: Push "func (t *testing.T){})
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	})
 }
