@@ -23,22 +23,21 @@ fi
 exec(){
     echo "Search files test *.go" >> $LOG_TEST
 
-    ls -c1 $DIR_PROG/test/*.go > ${LIST_FILE} 2>/dev/null
+    ls -c1 $DIR_PROG/test/*_test.go > ${LIST_FILE} 2>/dev/null
 
     while read tests;
     do
         NAME_TEST=${tests##*/}
         go test $DIR_PROG/test/$NAME_TEST -v >>$LOG_TEST
-
     done < ${LIST_FILE}
     #FAIL
-    err=`grep "FAIL: Test\/" $LOG_TEST | wc -l`
+    error=`grep "FAIL: Test\/" $LOG_TEST | wc -l`
     ok=`awk '/ok  / {print $0}' exect_test.log  | wc -l`
     echo "`grep "FAIL: Test\/" exect_test.log`"
 
     echo "Test execute"
     echo "------------"
-    echo "ERROR: $err"
+    echo "ERROR: $error"
     echo "OK: $ok"
 
 
