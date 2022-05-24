@@ -70,7 +70,7 @@ func TestBinaryTree(t *testing.T) {
 					Construct Binary Tree
 					-------------
 					      17
-			        	/    \
+		        	/    \
 					  11      21
 					 / \     /  \
 					1   39  10   2
@@ -111,7 +111,7 @@ func TestBinaryTree(t *testing.T) {
 					Construct Binary Tree
 					-------------
 					      15
-			        	/    \
+		        	/    \
 					  24      54
 					 /       /  \
 					35     62   13
@@ -140,14 +140,14 @@ func TestBinaryTree(t *testing.T) {
 	/*
 				 4
 				/ \
-			   /   \
-			  12    7
-			 / \     \
-			2   3     1
-			   / \   /
-			  6   8  5
-			 /     \
-			9       10
+		   /   \
+		  12    7
+		 / \     \
+		2   3     1
+		   / \   /
+		  6   8  5
+		 /     \
+		9       10
 		 -----------------
 		  Constructing binary tree
 	*/

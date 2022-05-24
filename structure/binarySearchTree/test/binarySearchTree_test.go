@@ -12,13 +12,13 @@ import (
 
 func TestBinarySearchTree(t *testing.T) {
 
-	//             40
+	//            40
 	//          /     \
 	//        20      60
 	//       /  \    /  \
 	//      10  30  50  70
-	//     /		  \
-	//    5            55
+	//     /		      \
+	//    5           55
 
 	root := GetNode(40)
 	root.Left = GetNode(20)
@@ -66,6 +66,15 @@ func TestBinarySearchTree(t *testing.T) {
 			t.Errorf("Search(55)= %v; want=%v", got, true)
 		}
 	})
+
+	//            40
+	//          /     \
+	//        20      60
+	//       /  \    /  \
+	//      10  30  50  70
+	//     /  \		    \
+	//    5   13      55
+
 
 	root.Left.Left.Right = GetNode(13)
 
