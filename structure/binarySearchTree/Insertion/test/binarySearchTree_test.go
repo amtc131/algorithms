@@ -35,7 +35,7 @@ func TestBinarySearchTree(t *testing.T) {
 		}
 	})
 
-	t.Run("Test 1: Inorder(tree)", func(t *testing.T) {
+	t.Run("Test 2: Inorder(tree)", func(t *testing.T) {
 		want := " 3 4 5 10 12 15"
 		testStdout, writer, osStdout := utils.NewStDoutRestore(t)
 
@@ -51,7 +51,7 @@ func TestBinarySearchTree(t *testing.T) {
 			t.Fatalf("Inorder(tree) = %q; want %q", got, want)
 		}
 	})
-	t.Run("Test 1: Postorder(tree)", func(t *testing.T) {
+	t.Run("Test 3: Postorder(tree)", func(t *testing.T) {
 		want := " 3 4 5 12 15 10"
 		testStdout, writer, osStdout := utils.NewStDoutRestore(t)
 
@@ -67,4 +67,39 @@ func TestBinarySearchTree(t *testing.T) {
 			t.Fatalf("Postorder(tree) = %q; want %q", got, want)
 		}
 	})
+
+  t.Run("Test 4 Alternate Sum", func(t *testing.T){
+    //            5    
+    //          /   \
+    //         /     \
+    //        3       19
+    //      /   \    /  \
+    //     2     4  8    31
+    //             / \  / \ 
+    //            7  15 25 50
+    //
+    // add tree node
+    var b *BinarySearchTree = GetBinarySearchTree()
+
+      b.AddNode(5)
+      b.AddNode(3)
+      b.AddNode(19)
+      b.AddNode(2)
+      b.AddNode(4)
+      b.AddNode(8)
+      b.AddNode(31)
+      b.AddNode(7)
+      b.AddNode(25)
+      b.AddNode(15)
+      b.AddNode(50)
+
+      want := 34
+
+      got := b.AlternateLeafSum()
+      if got != want {
+        t.Fatalf("AlternateLeafSum() = %d; want= %d", got, want)
+      }
+
+  })
+
 }

@@ -12,6 +12,7 @@ func GetTreeNode(data int) *TreeNode {
 
 type BinarySearchTree struct {
 	Root *TreeNode
+  alternate bool
 }
 
 func GetBinarySearchTree() *BinarySearchTree {

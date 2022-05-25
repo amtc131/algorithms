@@ -34,3 +34,31 @@ func (bs BinarySearchTree) Postorder(node *TreeNode) {
 		fmt.Print(" ", node.Data)
 	}
 }
+
+func (bs *BinarySearchTree) LeafSum(node *TreeNode) int {
+	if node != nil {
+		if node.Left == nil && node.Right == nil {
+			// Case A
+			// When node is leaf node.
+			// Change status
+			bs.alternate = !bs.alternate
+			// Check node is alternate or not
+			if bs.alternate {
+				// When get alternate node
+				return node.Data
+			}
+		} else {
+			// Case B
+			// When node is internal
+			// Visit left and right subtree and
+			// find alternat node.
+			return bs.LeafSum(node.Left) + bs.LeafSum(node.Right)
+		}
+	}
+	return 0
+}
+
+func (bs *BinarySearchTree) AlternateLeafSum() int {
+	bs.alternate = false
+	return bs.LeafSum(bs.Root)
+}
