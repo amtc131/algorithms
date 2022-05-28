@@ -5,6 +5,7 @@
 typedef struct binarysearch binarysearch;
 binarysearch *insert(binarysearch *root, int data);
 struct binarysearch *newNode(int data);
+binarysearch *insertIterative(binarysearch* root, int data);
 
 struct binarysearch
 {
@@ -42,6 +43,46 @@ binarysearch *insert(binarysearch *root, int data)
     return root;
 }
 
+// Iterative function to insert a key into BST
+// Root is pased by reference to the function
+binarysearch *insertIterative(binarysearch* root, int data)
+{
+    // start with the root node
+    binarysearch *curr = root;
+    
+    // pointer to store the parent of the current node
+    binarysearch* parent = NULL;
+    
+    // if the tree is empty, create a new node and set it as root
+    if(root == NULL){
+        return newNode(data);
+    }
+
+
+    // traverse the tree and find the parent node of the given key
+    while(curr != NULL){
+        // update the parent to the current node
+        parent = curr;
+        
+        // if the given key is less than the current node, go to the 
+        // left subtree; otherwise, go to the right subtree
+        if(data < curr->data){
+            curr = curr->left;
+        }else{
+            curr = curr->right; 
+        }
+    }
+
+    // construct a node and assign it to the appropiate parent pointer
+    if(data < parent->data){
+        parent->left = newNode(data);
+    }else{
+        parent->right = newNode(data);
+    }
+    return root;
+}
+
+
 void inOrder(binarysearch *root)
 {
     if (root != NULL)
@@ -54,13 +95,38 @@ void inOrder(binarysearch *root)
 
 int main(int argc, char const *argv[])
 {
-    binarysearch *tree = insert(NULL, 15);
+    //           15     15 < 16 go to right
+    //         /   \    subtree
+    //        /     \
+    //       10     20      20 > 16 go
+    //      /  \    / \     to left subtree
+    //     8   12  18 25
+    //              \  \    18 > 16 go
+    //              19 30    to left subtree
+    //   Insert
+    //    16 here
+    //
+    //    insert(root, 16)          
+
+    binarysearch *tree = NULL;
+    tree = insertIterative(tree, 15);
+    tree = insertIterative(tree, 10);
+    tree = insertIterative(tree, 20);
+    tree = insertIterative(tree, 8);
+    tree = insertIterative(tree, 12);
+    tree = insertIterative(tree, 16);
+    tree = insertIterative(tree, 25);
+
+    /*binarysearch *tree = NULL;
+    tree = insert(tree, 15);
     tree = insert(tree, 10);
     tree = insert(tree, 20);
     tree = insert(tree, 8);
     tree = insert(tree, 12);
     tree = insert(tree, 16);
     tree = insert(tree, 25);
+    */
+    // Function to perform inorder traversal on the tree
     inOrder(tree);
     return 0;
 }
