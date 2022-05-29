@@ -90,6 +90,20 @@ public class BinaryTree {
         }
     }
 
+    public BinaryTreeNode insertR(BinaryTreeNode root, int data){
+        if(root == null){
+            return new BinaryTreeNode(data);
+        }
+
+        if(data < root.data){
+            root.left = insertR(root.left, data);
+        }else{
+            root.right = insertR(root.right, data);
+        }
+
+        return root;
+    }
+
     /*
      * findInBSTRec is a helper function used by findInBST to
      * find the given data in the binary search tree
